@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 600px; margin: 0 auto; background: rgba(0,0,0,0.90); padding: 32px; border-radius: 14px; box-shadow: 0 0 18px #00caff;">
+    <h2 style="text-align:center;">Account Dashboard</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+        <div>
+            <img src="{{ url_for('static', filename='profile_pics/' ~ (profile_pic if profile_pic else 'default.png')) }}"
+                 alt="Profile Picture"
+                 style="width:60px;height:60px;border-radius:50%;border:2px solid #00caff;object-fit:cover;margin-bottom:10px;">
+            <p><strong>Username:</strong> <span style="color:#00caff;">{{ username }}</span></p>
+            <p><strong>Account Created:</strong> {{ created_at or 'Unknown' }}</p>
+            <p><strong>Last Login:</strong> {{ last_login or 'Unknown' }}</p>
+        </div>
+        <div style="text-align:right;">
+            <p><strong>Total Tickets:</strong> {{ total_tickets }}</p>
+            <p><strong>Open Tickets:</strong> <span style="color:deepskyblue;">{{ open_tickets }}</span></p>
+            <p><strong>Closed Tickets:</strong> <span style="color:#ff69b4;">{{ closed_tickets }}</span></p>
+        </div>
+    </div>
+    <div style="display:flex;gap:18px;justify-content:center;">
+        <a href="{{ url_for('profile') }}" class="discord-btn">Edit Profile / Picture</a>
+        <a href="{{ url_for('plans') }}" class="discord-btn">View Plans</a>
+        <a href="{{ url_for('contact') }}" class="discord-btn">Support</a>
+    </div>
+</div>
+<h1>Dashboard</h1>
+<p>Welcome, {{ username }}!</p>
+{% endblock %}

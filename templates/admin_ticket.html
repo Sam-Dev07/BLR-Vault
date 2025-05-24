@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 700px; margin: 0 auto; background: rgba(0,0,0,0.88); padding: 30px; border-radius: 12px; box-shadow: 0 0 18px #00caff;">
+    <h2 style="text-align:center;">Ticket #{{ ticket[0] }} — {{ ticket[1] }}</h2>
+    <p style="text-align:center; color:{{'deepskyblue' if ticket[2]=='open' else 'gray'}}; font-weight:bold;">Status: {{ ticket[2]|capitalize }}</p>
+    {% if ticket[2] == 'closed' %}
+        <div class="flash-error" style="margin-bottom:20px;">Closed Reason: {{ ticket[3] }}</div>
+    {% endif %}
+    <div style="margin-bottom:20px;">
+        <h3>Conversation</h3>
+        <div style="max-height:260px;overflow-y:auto;background:#181828;padding:12px;border-radius:8px;">
+            {% for sender, message, timestamp in messages %}
+                <div style="margin-bottom:12px;">
+                    {% if sender == 'Admin' %}
+                        <strong style="color:deepskyblue;">{{ sender }}</strong>:
+                    {% else %}
+                        <strong style="color:#ff69b4;">{{ sender }}</strong>:
+                    {% endif %}
+                    <span>{{ message }}</span>
+                    <span style="font-size:0.8em;color:#aaa;float:right;">{{ timestamp }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if ticket[2] == 'open' %}
+    <form method="POST" style="margin-bottom:18px;">
+        <textarea name="admin_message" placeholder="Type your reply..." required style="width:100%;padding:10px;margin-bottom:10px;border-radius:5px;min-height:70px;"></textarea><br>
+        <button type="submit" name="reply" class="discord-btn" style="width:100%;">Send Reply</button>
+    </form>
+    <form method="POST" style="margin-bottom:0;">
+        <input type="text" name="close_reason" placeholder="Reason for closing (required)" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:5px;">
+        <button type="submit" name="close" class="discord-btn" style="background:#ff0033;width:100%;">Close Ticket</button>
+    </form>
+    {% endif %}
+    <a href="{{ url_for('admin_tickets') }}" class="discord-btn" style="margin-top:20px;display:inline-block;">Back to Tickets</a>
+</div>
+{% endblock %}

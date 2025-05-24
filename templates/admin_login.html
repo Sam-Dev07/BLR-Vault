@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 400px; margin: 40px auto; background: rgba(0,0,0,0.85); padding: 30px; border-radius: 10px; box-shadow: 0 0 15px #ff69b4;">
+    <h2 style="text-align:center;">Admin Login</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Admin Username" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:5px;"><br>
+        <input type="password" name="password" placeholder="Admin Password" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:5px;"><br>
+        <button type="submit" style="padding:10px 20px;background-color:#00caff;color:black;font-weight:bold;border:none;border-radius:5px;cursor:pointer;width:100%;">Login</button>
+    </form>
+    {% if error %}
+        <div class="flash-error" style="margin-top:10px;">{{ error }}</div>
+    {% endif %}
+</div>
+{% endblock %}

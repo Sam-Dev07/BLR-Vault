@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+    <img src="https://i.redd.it/blue-lock-pngs-from-characters-v0-2upezc7ezpde1.png?width=500&format=png&auto=webp&s=4436f3cf9e62e8e62045dcf34ebd6185ccd9de10" width="250" style="border-radius: 10px;">
+    <div style="flex: 1;">
+        <h2>Create Account</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px;"><br>
+            <input type="password" name="password" placeholder="Password" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px;"><br>
+            <button type="submit" style="padding: 10px 20px; background-color: #00caff; color: black; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

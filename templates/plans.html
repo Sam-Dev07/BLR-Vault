@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+  <img src="https://i.redd.it/dqghxb7vqez81.png" width="200" style="border-radius: 6px;">
+  <div style="flex: 1;">
+    <h2>Plans</h2>
+    <ul>
+      <li>
+        <strong>Basic</strong> — No Flow, Custom Legendary or Mythic Style, 10+ Level, No Cash 
+        <strong>250(R$)</strong>
+        <img src="{{ url_for('static', filename='images/robux.png') }}" style="width:20px; height:20px; vertical-align:middle;">
+      </li>
+      <li>
+        <strong>Elite</strong> — Custom Mythic Flow, Nel Isagi or Don Lorenzo Style, 10+ Level, 5K Cash 
+        <strong>350(R$)</strong>
+        <img src="{{ url_for('static', filename='images/robux.png') }}" style="width:20px; height:20px; vertical-align:middle;">
+      </li>
+      <li>
+        <strong>Meta</strong> — Custom World Class Flow, Custom World Class Style, 30+ Level, 10K Cash 
+        <strong>500(R$)</strong>
+        <img src="{{ url_for('static', filename='images/robux.png') }}" style="width:20px; height:20px; vertical-align:middle;">
+      </li>
+    </ul>
+    <p>Join our Discord for buying and support.</p>
+    <a href="https://discord.gg/rTpmaKgnZa" class="discord-btn" target="_blank">Join Discord</a>
+  </div>
+</div>
+{% endblock %}
