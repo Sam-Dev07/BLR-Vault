@@ -3,10 +3,9 @@
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
-  background: linear-gradient(to right, #1a1a1a, #ff69b4);
+  background: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%);
   color: #fff;
-  /* background-image removed */
-  /* background-image: url("https://i.imgur.com/5L2CR7f.jpeg"); */
+  background-image: url("https://i.imgur.com/5L2CR7f.jpeg"); /* Blue Lock BG */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -88,15 +87,18 @@ header h1 {
 }
 
 nav {
+  background: #22223b;
+  padding: 1em;
+  text-align: center;
   margin-top: 10px;
   z-index: 10;
   position: relative;
 }
 
 nav a {
-  color: #ff69b4;
+  color: #e94560;
+  margin: 0 1em;
   text-decoration: none;
-  margin: 0 15px;
   font-weight: bold;
   font-size: 18px;
   transition: color 0.3s;
@@ -137,7 +139,7 @@ nav a:nth-child(5) {
 }
 
 .container {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(34, 34, 59, 0.95);
   padding: 30px;
   border-radius: 10px;
   margin: 30px auto;
@@ -182,7 +184,7 @@ input:focus {
 }
 
 button {
-  background-color: #ff007f;
+  background-color: #e94560;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -288,4 +290,78 @@ li {
     font-size: 1.5em;
     font-weight: bold;
     animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1), pulse 2.5s infinite alternate;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+nav {
+    background: #22223b;
+    padding: 1em;
+    text-align: center;
+}
+nav a {
+    color: #e94560;
+    margin: 0 1em;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: rgba(34, 34, 59, 0.95);
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    color: #fff;
+}
+h1 {
+    margin-top: 0;
+    color: #e94560;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #e94560;
+    background: #23234b;
+    color: #fff;
+}
+button {
+    padding: 8px 16px;
+    background: #e94560;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: #ff2e63;
+}
+.flashes {
+    list-style: none;
+    padding: 0;
+}
+.flashes li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+.flash-success {
+    background: #43aa8b;
+    color: #fff;
+}
+.flash-error {
+    background: #e94560;
+    color: #fff;
 }
