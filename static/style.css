@@ -167,6 +167,8 @@ input, button {
   border: none;
   border-radius: 5px;
   font-size: 16px;
+  pointer-events: auto !important;
+  z-index: 1;
 }
 
 input {
