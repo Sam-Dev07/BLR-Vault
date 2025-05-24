@@ -5,7 +5,8 @@ body {
   font-family: 'Rubik', sans-serif;
   background: linear-gradient(to right, #1a1a1a, #ff69b4);
   color: #fff;
-  background-image: url("https://i.imgur.com/5L2CR7f.jpeg"); /* Blue Lock BG */
+  /* background-image removed */
+  /* background-image: url("https://i.imgur.com/5L2CR7f.jpeg"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
