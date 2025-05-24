@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+{% block title %}Contact{% endblock %}
 {% block content %}
-<h2>Contact Support</h2>
-<p>Contact us at <a href="mailto:support@example.com">support@example.com</a> or use the support ticket system.</p>
+<h1>Contact Support</h1>
+<p>Use the form below to send a support ticket to the admin.</p>
+<form method="post" action="{{ url_for('contact') }}">
+    <textarea name="message" rows="5" cols="40" placeholder="Describe your issue..." required></textarea><br>
+    <button type="submit">Send Ticket</button>
+</form>
 {% endblock %}
