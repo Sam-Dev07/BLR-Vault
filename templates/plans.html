@@ -1,28 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-<div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
-  <img src="https://i.redd.it/dqghxb7vqez81.png" width="200" style="border-radius: 6px;">
-  <div style="flex: 1;">
-    <h2>Plans</h2>
-    <ul>
-      <li>
+<div style="display: flex; justify-content: center; align-items: flex-start; min-height: 60vh;">
+  <div style="background: rgba(34,34,59,0.95); border-radius: 16px; box-shadow: 0 2px 16px #0008; padding: 32px 24px; max-width: 420px; width: 100%;">
+    <h2 style="text-align:center; color:#ff5ecb; margin-bottom: 24px; text-shadow: 0 0 8px #ff5ecb88;">Plans</h2>
+    <ul style="list-style:none; padding:0; margin:0;">
+      <li style="margin-bottom: 18px; background: #23234b; border-radius: 10px; padding: 18px 16px; border-left: 4px solid #00f0ff;">
         <strong>Basic</strong> — No Flow, Custom Legendary or Mythic Style, 10+ Level, No Cash 
         <strong>250(R$)</strong>
         <img src="{{ url_for('static', filename='images/robux.png') }}" style="width:20px; height:20px; vertical-align:middle;">
       </li>
-      <li>
+      <li style="margin-bottom: 18px; background: #23234b; border-radius: 10px; padding: 18px 16px; border-left: 4px solid #00f0ff;">
         <strong>Elite</strong> — Custom Mythic Flow, Nel Isagi or Don Lorenzo Style, 10+ Level, 5K Cash 
         <strong>350(R$)</strong>
         <img src="{{ url_for('static', filename='images/robux.png') }}" style="width:20px; height:20px; vertical-align:middle;">
       </li>
-      <li>
+      <li style="background: #23234b; border-radius: 10px; padding: 18px 16px; border-left: 4px solid #00f0ff;">
         <strong>Meta</strong> — Custom World Class Flow, Custom World Class Style, 30+ Level, 10K Cash 
         <strong>500(R$)</strong>
         <img src="{{ url_for('static', filename='images/robux.png') }}" style="width:20px; height:20px; vertical-align:middle;">
       </li>
     </ul>
-    <p>Join our Discord for buying and support.</p>
-    <a href="https://discord.gg/rTpmaKgnZa" class="discord-btn" target="_blank">Join Discord</a>
+    <p style="text-align:center; margin-top: 24px;">Join our Discord for buying and support.</p>
+    <div style="text-align:center;">
+      <a href="https://discord.gg/rTpmaKgnZa" class="discord-btn" target="_blank" style="display:inline-block; background:#ff5ecb; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:bold; box-shadow:0 0 8px #ff5ecb88;">Join Discord</a>
+    </div>
   </div>
 </div>
 {% endblock %}
