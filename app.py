@@ -75,7 +75,9 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'username' not in session:
-            flash('Please Login to View the Home Page!', 'flash-error')
+            # Use the endpoint name as the page name for the flash message
+            page = request.endpoint.replace('_', ' ').title() if request.endpoint else "this page"
+            flash(f'Please login to view the {page}!', 'flash-error')
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     return decorated_function
@@ -141,8 +143,17 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
+    session.pop('admin_logged_in', None)
     flash('You have been logged out.', 'flash-success')
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
+
+# Add admin dashboard route to prevent error if accessed
+@app.route('/admin_dashboard')
+def admin_dashboard():
+    if not session.get('admin_logged_in'):
+        flash('Admin access required.', 'flash-error')
+        return redirect(url_for('login'))
+    return render_template('admin_dashboard.html', username='Admin')
 
 @app.route('/plans')
 @login_required
@@ -189,11 +200,6 @@ def profile():
     conn.close()
     return render_template('profile.html', username=username)
 
-@app.context_processor
-def inject_profile_pic():
-    # Remove profile_pic from context
-    return dict()
-
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -223,12 +229,26 @@ def dashboard():
         closed_tickets=closed_tickets
     )
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 @login_required
 def contact():
+    if request.method == 'POST':
+        username = session.get('username')
+        message = request.form.get('message', '').strip()
+        if message:
+            conn = sqlite3.connect('users.db')
+            c = conn.cursor()
+            # Create a new ticket for this message
+            c.execute("INSERT INTO tickets (username) VALUES (?)", (username,))
+            ticket_id = c.lastrowid
+            c.execute("INSERT INTO messages (ticket_id, sender, message) VALUES (?, ?, ?)", (ticket_id, username, message))
+            conn.commit()
+            conn.close()
+            flash('Your support ticket has been submitted!', 'flash-success')
+            return redirect(url_for('contact'))
+        else:
+            flash('Message cannot be empty.', 'flash-error')
     return render_template('contact.html', username=session.get('username'))
-
-# (The rest of your routes remain unchanged...)
 
 @app.before_request
 def update_last_login():
@@ -243,4 +263,5 @@ def update_last_login():
         conn.close()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
