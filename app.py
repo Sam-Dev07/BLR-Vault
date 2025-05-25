@@ -250,6 +250,15 @@ def contact():
             flash('Message cannot be empty.', 'flash-error')
     return render_template('contact.html', username=session.get('username'))
 
+@app.route('/admin_tickets')
+def admin_tickets():
+    # Only allow admin
+    if not session.get('admin_logged_in'):
+        flash('Admin access required.', 'flash-error')
+        return redirect(url_for('login'))
+    # Fetch tickets/messages here and render a template
+    return render_template('admin_tickets.html')
+
 @app.before_request
 def update_last_login():
     if 'username' in session and request.endpoint not in ['static']:
@@ -264,5 +273,7 @@ def update_last_login():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
+
+
 
 
